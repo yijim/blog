@@ -1,0 +1,45 @@
+*{box-sizing:border-box;}
+body{margin:0;font-family:"Inter","Segoe UI","Helvetica Neue",sans-serif;color:#fff;background:#0f172a;line-height:1.6;overflow-x:hidden;}
+
+#bg-canvas{position:fixed;inset:0;z-index:-3;background:#0f172a;}
+.bg-blobs{position:fixed;inset:0;background:
+radial-gradient(circle at 10% 20%,rgba(59,130,246,.28),transparent 45%),
+radial-gradient(circle at 90% 10%,rgba(236,72,153,.28),transparent 45%),
+radial-gradient(circle at 50% 80%,rgba(45,212,191,.28),transparent 45%);filter:blur(70px);animation:blobs 18s ease-in-out infinite;z-index:-2;}
+@keyframes blobs{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-40px) scale(1.05);}}
+
+.container{width:min(1100px,92%);margin:0 auto;}
+.site-header{background:rgba(15,23,42,.55);backdrop-filter:blur(10px);position:sticky;top:0;z-index:10;}
+.nav{display:flex;justify-content:space-between;align-items:center;height:60px;}
+.logo{font-weight:600;font-size:1.1rem;}
+nav a{margin-left:1.2rem;color:#fff;opacity:.85;transition:.3s;}
+nav a:hover{opacity:1;}
+
+.hero{padding:5rem 0 4rem;}
+.hero-content{display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:space-between;}
+.hero h1{font-size:clamp(2rem,4vw,2.8rem);}
+.btn{display:inline-block;margin-top:1.4rem;background:#2563eb;padding:.75rem 1.4rem;border-radius:.6rem;font-weight:500;color:#fff;transition:.3s;}
+.btn:hover{background:#1d4ed8;}
+
+.section{background:#fff;color:#111;padding:4rem 0;}
+.section.alt{background:rgba(255,255,255,.08);color:#fff;backdrop-filter:blur(6px);}
+.section h2{font-size:1.8rem;margin-bottom:.4rem;}
+.section-sub{opacity:.75;margin-bottom:2rem;}
+
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.post-card{background:#fafafa;border-radius:1rem;padding:1.5rem;transition:.3s;}
+.post-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.1);}
+.meta{color:#888;font-size:.9rem;margin:.3rem 0 1rem;}
+.readmore{color:#2563eb;font-weight:500;}
+
+.about{display:flex;flex-wrap:wrap;gap:2.5rem;}
+.about-box{background:rgba(255,255,255,.1);border-radius:1rem;padding:1.2rem 1.4rem;color:#fff;}
+
+.contact-box{background:#fefefe;color:#000;padding:1.3rem 1.5rem;border-radius:1rem;display:inline-block;}
+
+.site-footer{text-align:center;padding:2.8rem 0;color:#bbb;background:transparent;}
+
+@media(max-width:780px){
+  .hero-content{text-align:center;flex-direction:column;}
+  nav{display:none;}
+}

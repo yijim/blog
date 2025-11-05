@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Article Title · Yi Robotics</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Robotics industry insight and solution case study.">
+</head>
+<body>
+
+  <!-- particle + background layers remain active -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="bg-blobs"></div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <div class="logo">Yi Robotics</div>
+      <nav>
+        <a href="index.html#home">Home</a>
+        <a href="index.html#analysis">Analysis</a>
+        <a href="index.html#solutions">Solutions</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container article">
+
+    <!-- ★ Change these per article -->
+    <h1>Article Title</h1>
+    <p class="meta">Published on Jan 10, 2026 · Robotics Insight</p>
+
+    <p>
+      <!-- introduction paragraph -->
+      This article discusses the current state of robotics deployment in industrial environments,
+      focusing on the strategic decision-making and engineering challenges typically encountered
+      in AMR/AGV systems, warehouse automation, and integrated logistics operations.
+    </p>
+
+    <h2>1. Context and Problem Statement</h2>
+    <p>
+      Describe the real situation that triggered the analysis.
+      What is happening in the warehouse, production line, or logistic flow?
+      What inefficiencies or constraints were observed?
+    </p>
+
+    <h2>2. System Architecture Overview</h2>
+    <p>
+      Provide a high-level explanation of the system:
+    </p>
+    <ul>
+      <li>Robot platform (AMR/AGV type, navigation mode, payload)</li>
+      <li>WCS and RCS interaction logic</li>
+      <li>Network topology and operational environment</li>
+    </ul>
+
+    <h2>3. Diagnostic Analysis</h2>
+    <p>
+      Detail how bottlenecks, failures, or inefficiencies were identified.
+      This may include system logs, motion traces, traffic density, or task dispatch patterns.
+    </p>
+
+    <h2>4. Proposed Solution</h2>
+    <p>
+      Explain the technical changes or strategic adjustments that resolve the issue.
+      Outline the updated control logic, process flow, or integration steps.
+    </p>
+
+    <h3>Key Implementation Points</h3>
+    <ul>
+      <li>Specific logic modifications or API involvement</li>
+      <li>Safety and operation justification</li>
+      <li>Execution sequence and validation approach</li>
+    </ul>
+
+    <h2>5. Results and Impact</h2>
+    <p>
+      Share measurable improvements after applying the solution.
+      This may include throughput increases, reduced wait times, improved resource balance, etc.
+    </p>
+
+    <h2>6. Conclusion</h2>
+    <p>
+      Summarize the main insight. Highlight the principle that applies to similar factories or operations.
+      This final section should feel like advice to future engineers.
+    </p>
+
+    <p><a class="readmore" href="index.html">← Back to homepage</a></p>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Yi Shuwang · Robotics Industry Insights</p>
+    </div>
+  </footer>
+
+  <!-- particle script (same as index, do not change) -->
+  <script>
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h;
+    function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resize);
+    resize();
+    const particles=[];for(let i=0;i<90;i++){particles.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4,r:Math.random()*2+1});}
+    const mouse={x:null,y:null};window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+    function draw(){ctx.clearRect(0,0,w,h);ctx.fillStyle='rgba(255,255,255,0.7)';
+      for(const p of particles){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+        if(mouse.x!==null){const dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<140){p.x+=dx*0.015;p.y+=dy*0.015;}}
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}
+      for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){ctx.strokeStyle='rgba(255,255,255,'+(1-dist/120)*0.4+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}}}
+      requestAnimationFrame(draw);}draw();
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

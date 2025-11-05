@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yi Michael · Robotics Industry Insights</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Robotics Solutions Engineer sharing industry insights, system architecture, and AMR/AGV deployment knowledge.">
+</head>
+<body>
+
+  <canvas id="bg-canvas"></canvas>
+  <div class="bg-blobs"></div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <div class="logo">Yi Michael Robotics</div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Hi, I'm <span>Yi Michael</span> 👋</h1>
+        <p>Robotics Solutions Engineer focused on AMR/AGV deployment, smart warehouse integration, and automated logistics architecture.  
+        This site shares <strong>industry analysis, engineering insights, and real-world solutions</strong> from projects across Europe.</p>
+        <a class="btn" href="#analysis">Explore Insights</a>
+      </div>
+      <div class="hero-photo"></div>
+    </div>
+  </section>
+
+  <section id="analysis" class="section">
+    <div class="container">
+      <h2>Industry Analysis</h2>
+      <p class="section-sub">Trends and strategic insights shaping robotics and intralogistics.</p>
+
+      <div class="posts-grid">
+        <article class="post-card">
+          <a href="post.html"><h3>How AMR Deployment Reshapes Warehouse Operations</h3></a>
+          <p class="meta">Industry Insight</p>
+          <p class="excerpt">A breakdown of the operational and management changes introduced by AMR fleets in European facilities.</p>
+          <a class="readmore" href="post.html">Read more →</a>
+        </article>
+
+        <article class="post-card">
+          <a href="post.html"><h3>WCS–RCS Integration & Data Flow Strategy</h3></a>
+          <p class="meta">System Architecture</p>
+          <p class="excerpt">How to design stable, scalable communication between robot control systems and warehouse software layers.</p>
+          <a class="readmore" href="post.html">Read more →</a>
+        </article>
+
+        <article class="post-card">
+          <a href="post.html"><h3>Evaluating Automation Readiness in Factories</h3></a>
+          <p class="meta">Engineering Evaluation</p>
+          <p class="excerpt">Standardized approach to assessing whether a production environment is ready for robotics adoption.</p>
+          <a class="readmore" href="post.html">Read more →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="solutions" class="section alt">
+    <div class="container">
+      <h2>Solutions & Case Studies</h2>
+      <p class="section-sub">Practical engineering implementations and optimization methods.</p>
+
+      <div class="posts-grid">
+        <article class="post-card">
+          <a href="post.html"><h3>Automated Door Control via WCS Sync</h3></a>
+          <p class="meta">Integration</p>
+          <p class="excerpt">Reliable access control logic between AMR traffic and facility infrastructure.</p>
+          <a class="readmore" href="post.html">View solution →</a>
+        </article>
+
+        <article class="post-card">
+          <a href="post.html"><h3>Hybrid Navigation: SLAM + Tape</h3></a>
+          <p class="meta">Navigation Engineering</p>
+          <p class="excerpt">Combining visual SLAM with marker-based fallback to handle dynamic environments.</p>
+          <a class="readmore" href="post.html">View solution →</a>
+        </article>
+
+        <article class="post-card">
+          <a href="post.html"><h3>AMR Traffic & Flow Optimization</h3></a>
+          <p class="meta">Operational Optimization</p>
+          <p class="excerpt">Throughput tuning, zone scheduling, and station flow balancing.</p>
+          <a class="readmore" href="post.html">View solution →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container about">
+      <div>
+        <h2>About Me</h2>
+        <p>I’m <strong>Yi Michael</strong>, specializing in robotic automation across European manufacturing and logistics environments.  
+        My work focuses on AMR/AGV deployment, system debugging, API integration, and warehouse optimization.</p>
+      </div>
+      <div class="about-box">
+        <strong>Focus Areas:</strong>
+        <ul>
+          <li>AMR/AGV Fleet Deployment</li>
+          <li>Smart Warehouse System Integration</li>
+          <li>RESTful + WCS/RCS Communication</li>
+          <li>Industrial On-Site Engineering</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section alt">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="section-sub">For collaboration or technical inquiries.</p>
+      <div class="contact-box">
+        <p>📧 Email: <a href="mailto:hi@yourdomain.com">hi@yourdomain.com</a></p>
+        <p>🔗 LinkedIn: <a href="#">linkedin.com/in/yimichael</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Yi Michael · Robotics Industry Insights</p>
+    </div>
+  </footer>
+
+  <script>
+    const c=document.getElementById('bg-canvas'),x=c.getContext('2d');let w,h;function r(){w=c.width=innerWidth;h=c.height=innerHeight}addEventListener('resize',r);r();
+    const P=[];for(let i=0;i<90;i++)P.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+1});
+    const M={x:null,y:null};addEventListener('mousemove',e=>{M.x=e.clientX;M.y=e.clientY});
+    function d(){x.clearRect(0,0,w,h),x.fillStyle='rgba(255,255,255,.7)';for(const p of P){p.x+=p.vx,p.y+=p.vy,p.x<0&&(p.x=w),p.x>w&&(p.x=0),p.y<0&&(p.y=h),p.y>h&&(p.y=0),M.x!=null&&Math.hypot(p.x-M.x,p.y-M.y)<140&&(p.x+=(p.x-M.x)*.015,p.y+=(p.y-M.y)*.015),x.beginPath(),x.arc(p.x,p.y,p.r,0,7),x.fill()}for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){let dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,z=Math.hypot(dx,dy);z<120&&(x.strokeStyle=`rgba(255,255,255,${(1-z/120)*.4})`,x.beginPath(),x.moveTo(P[i].x,P[i].y),x.lineTo(P[j].x,P[j].y),x.stroke())}requestAnimationFrame(d)}d();
+    year.textContent=new Date().getFullYear();
+  </script>
+
+</body>
+</html>
